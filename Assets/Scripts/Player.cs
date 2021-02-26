@@ -6,7 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float padding = 1f;
+    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float projectileFiringPeriod = 0.1f;
 
+    private bool isFiring = false;
     private float xMin;
     private float xMax;
     private float yMin;
@@ -18,6 +22,41 @@ public class Player : MonoBehaviour
         SetUpMoveBoundaries();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        Fire();
+    }
+
+    private void Fire()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (!isFiring)
+            {
+                isFiring = true;
+                StartCoroutine(nameof(FireContinuously));
+            }
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(nameof(FireContinuously));
+            isFiring = false;
+        }
+    }
+
+    private IEnumerator FireContinuously()
+    {
+        while (true)
+        {
+            var laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            yield return new WaitForSeconds(projectileFiringPeriod);
+        }
+    }
+
     private void SetUpMoveBoundaries()
     {
         var gameCamera = Camera.main;
@@ -25,12 +64,6 @@ public class Player : MonoBehaviour
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Move();
     }
 
     private void Move()
