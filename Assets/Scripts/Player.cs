@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;
+    [Header("Player")] [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float padding = 1f;
-    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private int health = 200;
+    [SerializeField] private AudioClip playerKilledSfx;
+    [Range(0,1)][SerializeField] private float playerKilledVolume = 1f;
+    [SerializeField] private AudioClip playerLaserSfx;
+    [Range(0,1)][SerializeField] private float playerLaserVolume = 0.25f;
+
+    [Header("Projectile")] [SerializeField]
+    private GameObject laserPrefab;
+
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float projectileFiringPeriod = 0.1f;
 
@@ -53,6 +61,7 @@ public class Player : MonoBehaviour
         {
             var laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            AudioSource.PlayClipAtPoint(playerLaserSfx, Camera.main.transform.position, playerLaserVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
@@ -76,5 +85,28 @@ public class Player : MonoBehaviour
         var newYPos = Mathf.Clamp(position.y + deltaY, yMin, yMax);
         position = new Vector2(newXPos, newYPos);
         transform.position = position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer)
+        {
+            return;
+        }
+
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.Damage;
+        damageDealer.Hit();
+        if (health <= 0)
+        {
+            FindObjectOfType<Level>().LoadGameOver();
+            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(playerKilledSfx, Camera.main.transform.position, playerKilledVolume);
+        }
     }
 }
