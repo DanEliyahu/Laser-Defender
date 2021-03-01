@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy")]
-    [SerializeField] private float health = 500;
+    [Header("Enemy")] [SerializeField] private float health = 500;
+    [SerializeField] private int scoreValue = 150;
     [SerializeField] private GameObject explosionParticle;
     [SerializeField] private float durationOfExplosion = 1f;
     [SerializeField] private AudioClip enemyKilledSfx;
-    [Range(0,1)][SerializeField] private float enemyKilledVolume = 0.4f;
-    
-    [Header("Enemy Laser")]
-    [SerializeField] private float shotCounter; // for Debug
+    [Range(0, 1)] [SerializeField] private float enemyKilledVolume = 0.4f;
+
+    [Header("Enemy Laser")] [SerializeField]
+    private float shotCounter; // for Debug
+
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private AudioClip enemyLaserSfx;
-    [Range(0,1)][SerializeField] private float enemyLaserVolume = 0.25f;
+    [Range(0, 1)] [SerializeField] private float enemyLaserVolume = 0.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,8 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(enemyKilledSfx,Camera.main.transform.position,enemyKilledVolume);
+            FindObjectOfType<GameSession>().AddToScore(scoreValue);
+            AudioSource.PlayClipAtPoint(enemyKilledSfx, Camera.main.transform.position, enemyKilledVolume);
             var explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             Destroy(explosion, durationOfExplosion);
         }
