@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 1
-  health: 200
+  health: 300
   playerKilledSfx: {fileID: 8300000, guid: 3adedf24cce9fc14eb35cf03b43fefa3, type: 3}
   playerKilledVolume: 1
   playerLaserSfx: {fileID: 8300000, guid: c07a608afa770e1c0a1d1a6badf5a319, type: 3}

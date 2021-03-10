@@ -854,22 +854,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8696214011662144102, guid: 4cd62610f8dd0bccdae5e1d3c1a7656d, type: 3}
-      propertyPath: waveConfigs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696214011662144102, guid: 4cd62610f8dd0bccdae5e1d3c1a7656d, type: 3}
-      propertyPath: waveConfigs.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 39059e8b969d80eccb4519c1c8077e95, type: 2}
-    - target: {fileID: 8696214011662144102, guid: 4cd62610f8dd0bccdae5e1d3c1a7656d, type: 3}
-      propertyPath: waveConfigs.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 248af481945c8b117b782ca556683d10, type: 2}
-    - target: {fileID: 8696214011662144102, guid: 4cd62610f8dd0bccdae5e1d3c1a7656d, type: 3}
-      propertyPath: waveConfigs.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 1bf8af11954eaffed9595f94605507fe, type: 2}
     - target: {fileID: 8696214011662144103, guid: 4cd62610f8dd0bccdae5e1d3c1a7656d, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6879492914730023679}
   - component: {fileID: 8731289674810740735}
   m_Layer: 11
-  m_Name: Red Enemy Laser
+  m_Name: Red Enemy Laser 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 600a81e21d18e2bebb72a37ac564069c, type: 3}
-  m_Color: {r: 0.9811321, g: 0.82198757, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.23826455, b: 0.98039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6879492914730023679}
   - component: {fileID: 8731289674810740735}
   m_Layer: 11
-  m_Name: Green Enemy Laser
+  m_Name: Red Enemy Laser 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,11 +71,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 490814645
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a745e7e279f90912ab33b543b8935aa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 600a81e21d18e2bebb72a37ac564069c, type: 3}
+  m_Color: {r: 0, g: 0.98039216, b: 0.012462747, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,14 +123,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.09, y: 0.37}
+    oldSize: {x: 0.26, y: 0.74}
     newSize: {x: 0.09, y: 0.37}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09, y: 0.37}
+  m_Size: {x: 0.26, y: 0.74}
   m_EdgeRadius: 0
 --- !u!114 &8731289674810740735
 MonoBehaviour:

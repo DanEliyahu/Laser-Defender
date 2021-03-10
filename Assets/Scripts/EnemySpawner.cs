@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -19,10 +20,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllWaves()
     {
-        for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)
+        var rand = new System.Random();
+        var shuffledWaveConfigs = waveConfigs.OrderBy(waveConfig => rand.Next()).ToList();
+        for (int waveIndex = startingWave; waveIndex < shuffledWaveConfigs.Count; waveIndex++)
         {
-            var currentWave = waveConfigs[waveIndex];
+            var currentWave = shuffledWaveConfigs[waveIndex];
             yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+            yield return new WaitForSeconds(currentWave.TimeAfterWave);
         }
     }
 

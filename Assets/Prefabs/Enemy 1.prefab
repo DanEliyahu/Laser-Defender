@@ -113,14 +113,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 500
+  scoreValue: 150
   explosionParticle: {fileID: 2861345048423245672, guid: 98bd21e2b1db075239f32bf7ddf75192, type: 3}
   durationOfExplosion: 1
   enemyKilledSfx: {fileID: 8300000, guid: 19b605541b9066eeb92b201d44cd003f, type: 3}
   enemyKilledVolume: 0.4
-  shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
-  laserPrefab: {fileID: 4436753985233798125, guid: 275b68d77cee0d2e2b3bc390fd2a5664, type: 3}
+  laserPrefab: {fileID: 4436753985233798125, guid: 70ed24a2cbdc6ac3299fe4848b46d2ef, type: 3}
   projectileSpeed: 10
   enemyLaserSfx: {fileID: 8300000, guid: 289bc282696100f879f49a7af35c48a7, type: 3}
   enemyLaserVolume: 0.25
@@ -173,4 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8917f1580c915f65a96b44fbce56ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 200
+  damage: 300

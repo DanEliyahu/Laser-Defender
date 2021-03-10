@@ -11,9 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip enemyKilledSfx;
     [Range(0, 1)] [SerializeField] private float enemyKilledVolume = 0.4f;
 
-    [Header("Enemy Laser")] [SerializeField]
-    private float shotCounter; // for Debug
-
+    [Header("Enemy Laser")]
     [SerializeField] private float minTimeBetweenShots = 0.2f;
     [SerializeField] private float maxTimeBetweenShots = 3f;
     [SerializeField] private GameObject laserPrefab;
@@ -21,10 +19,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip enemyLaserSfx;
     [Range(0, 1)] [SerializeField] private float enemyLaserVolume = 0.25f;
 
+    private float _shotCounter;
     // Start is called before the first frame update
     void Start()
     {
-        shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
     // Update is called once per frame
@@ -35,11 +34,11 @@ public class Enemy : MonoBehaviour
 
     private void CountDownAndShoot()
     {
-        shotCounter -= Time.deltaTime;
-        if (shotCounter <= 0f)
+        _shotCounter -= Time.deltaTime;
+        if (_shotCounter <= 0f)
         {
             Fire();
-            shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         }
     }
 
