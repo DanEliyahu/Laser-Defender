@@ -118,6 +118,7 @@ MonoBehaviour:
   durationOfExplosion: 1
   enemyKilledSfx: {fileID: 8300000, guid: 19b605541b9066eeb92b201d44cd003f, type: 3}
   enemyKilledVolume: 0.4
+  floatingText: {fileID: 9213282518503962461, guid: b6ee39a7666f8001894e01961da9fee7, type: 3}
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
   laserPrefab: {fileID: 4436753985233798125, guid: 70ed24a2cbdc6ac3299fe4848b46d2ef, type: 3}

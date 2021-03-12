@@ -10,9 +10,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float durationOfExplosion = 1f;
     [SerializeField] private AudioClip enemyKilledSfx;
     [Range(0, 1)] [SerializeField] private float enemyKilledVolume = 0.4f;
+    [SerializeField] private GameObject floatingText;
 
-    [Header("Enemy Laser")]
-    [SerializeField] private float minTimeBetweenShots = 0.2f;
+    [Header("Enemy Laser")] [SerializeField]
+    private float minTimeBetweenShots = 0.2f;
+
     [SerializeField] private float maxTimeBetweenShots = 3f;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private float projectileSpeed = 10f;
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     [Range(0, 1)] [SerializeField] private float enemyLaserVolume = 0.25f;
 
     private float _shotCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +74,17 @@ public class Enemy : MonoBehaviour
             AudioSource.PlayClipAtPoint(enemyKilledSfx, Camera.main.transform.position, enemyKilledVolume);
             var explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             Destroy(explosion, durationOfExplosion);
+            ShowDamage();
+        }
+    }
+
+    private void ShowDamage()
+    {
+        if (floatingText)
+        {
+            var prefab = Instantiate(floatingText, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = "+" + scoreValue;
+            Destroy(prefab, durationOfExplosion);
         }
     }
 }
